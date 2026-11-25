@@ -1,0 +1,12 @@
+Pon aqui tus fotos con EXACTAMENTE estos nombres (jpg, jpeg, png o webp):
+
+gretel.jpg      -> foto de Gretel Chalets (tarjeta de lugares)
+mylos.jpg       -> foto de MYLOS Hotel Boutique (tarjeta de lugares)
+momento1.jpg    -> Momentos: foto grande (nuestro primer viaje)
+momento2.jpg    -> Momentos: cafe
+momento3.jpg    -> Momentos: cocina
+momento4.jpg    -> Momentos: caminos
+momento5.jpg    -> Momentos: familia
+
+Consejo: que cada foto pese menos de 500 KB (ancho de unos 1600 px) para que cargue rapido en el celular.
+Despues arrastra de nuevo la carpeta completa (index.html + images) a Netlify.
