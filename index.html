@@ -6,131 +6,497 @@
 <title>Mariana & Ryan · Guatapé 2028</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&family=Pinyon+Script&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#faf6ee;--paper:#fffdf9;--ink:#1d2f45;--blue:#4f78a0;--b2:#a9c1d6;--wash:#e4edf4;--sage:#9bb59a;--cc:#7a4a32;--line:#ddd3c2;--mute:#5b6b7b;
-box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#14202d;--paper:#1b2a3a;--ink:#f1ece2;--blue:#8fb4d6;--wash:#1e3345;--line:#2f4357;--mute:#a9b8c6;--cc:#d9a98a}}
-:root[data-theme="dark"]{--bg:#14202d;--paper:#1b2a3a;--ink:#f1ece2;--blue:#8fb4d6;--wash:#1e3345;--line:#2f4357;--mute:#a9b8c6;--cc:#d9a98a}
-*{box-sizing:border-box}html{scroll-behavior:smooth}html.lock{overflow:hidden}
-body{margin:0;background:var(--bg);color:var(--ink);font:300 18px/1.8 Jost,system-ui,sans-serif}
-body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opacity:.07;mix-blend-mode:multiply;background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence baseFrequency='.8' numOctaves='2'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>")}
+:root{--bg:#faf6ee;--paper:#fffdf9;--ink:#1d2f45;--blue:#4f78a0;--b2:#a9c1d6;--wash:#e4edf4;--sage:#9bb59a;--cc:#7a4a32;--line:#ddd3c2;--mute:#5b6b7b}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:300 18px/1.8 Jost,system-ui,sans-serif;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 html[lang=es] [data-en],html[lang=es] [data-pt],html[lang=en] [data-es],html[lang=en] [data-pt],html[lang=pt] [data-es],html[lang=pt] [data-en]{display:none}
 h1,h2,h3{font-family:'Cormorant Garamond',Georgia,serif;font-weight:500;margin:0;line-height:1.15}
-nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 20px;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);font-size:11px;letter-spacing:.22em;text-transform:uppercase}
-nav div{display:flex;gap:18px;overflow-x:auto;white-space:nowrap}nav a{color:var(--ink);text-decoration:none}
-nav button,.lb button{background:none;border:1px solid var(--blue);color:var(--blue);padding:5px 12px;font:inherit;cursor:pointer;letter-spacing:.15em}
-nav button.active-audio{background:var(--blue);color:#fff}
+nav{position:sticky;top:0;z-index:10;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 20px;background:rgba(250,246,238,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);font-size:11px;letter-spacing:.2em;text-transform:uppercase}
+nav div{display:flex;gap:16px;overflow-x:auto;white-space:nowrap}
+nav a{color:var(--ink);text-decoration:none}
+nav button,.lb button{background:none;border:1px solid var(--blue);color:var(--blue);padding:5px 11px;font:inherit;cursor:pointer;letter-spacing:.14em}
+nav button.active-audio,.lb button.on{background:var(--blue);color:#fff}
 #pg{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--b2),var(--cc));z-index:60}
-#en{position:fixed;inset:0;z-index:100;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px;background:radial-gradient(ellipse at 20% 15%,#bcd3e5,transparent 60%),radial-gradient(ellipse at 85% 90%,#d9c3b2,transparent 55%),var(--wash);transition:opacity 1.2s,transform 1.2s}
-#en.out{opacity:0;transform:scale(1.06);pointer-events:none}
-#en .mono{font-size:clamp(90px,24vw,170px)}#en p{font:italic 400 24px 'Cormorant Garamond';margin:0 0 28px}
-.lb{display:flex;gap:8px;margin-bottom:26px}.lb button.on{background:var(--blue);color:#fff}
-.btn{display:inline-block;background:var(--ink);color:var(--bg);padding:14px 32px;border:0;font:400 12px Jost;letter-spacing:.25em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:transform .3s}.btn:hover{transform:translateY(-2px)}
-.art{position:absolute;inset:-5% 0;width:100%;height:110%;filter:url(#wc);pointer-events:none;will-change:transform}
-.sw{transform-box:fill-box;transform-origin:50% 100%;animation:sway 7s ease-in-out infinite alternate}.sw.b{animation-duration:9s;animation-delay:-3s}
-.bl{transform-box:fill-box;transform-origin:center;animation:bloom 3.5s ease-out both}
-@keyframes sway{from{transform:rotate(-2.5deg)}to{transform:rotate(2.5deg)}}@keyframes bloom{from{transform:scale(.4);opacity:0}to{transform:scale(1)}}@keyframes fi{from{opacity:0;transform:translateY(10px)}}
-.hero{position:relative;min-height:94vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:60px 24px;overflow:hidden;background:var(--wash)}
-.hero>*:not(svg){position:relative}
+#en{position:fixed;inset:0;z-index:100;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px;background:radial-gradient(ellipse at 20% 15%,#bcd3e5,transparent 60%),radial-gradient(ellipse at 85% 90%,#d9c3b2,transparent 55%),var(--wash);transition:opacity .6s ease}
+#en.out{opacity:0;pointer-events:none}
+#en .mono{font-size:clamp(84px,22vw,160px)}
+#en p{font:italic 400 24px 'Cormorant Garamond',serif;margin:0 0 24px}
+.lb{display:flex;gap:8px;margin-bottom:22px}
+.btn{display:inline-block;background:var(--ink);color:#fff;padding:14px 30px;border:0;font:400 12px Jost,sans-serif;letter-spacing:.24em;text-transform:uppercase;text-decoration:none;cursor:pointer}
+.hero{min-height:86vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:60px 24px;background:radial-gradient(ellipse at 15% 15%,rgba(169,193,214,.45),transparent 55%),radial-gradient(ellipse at 85% 85%,rgba(155,181,154,.35),transparent 55%),var(--wash)}
 .mono{font:400 clamp(70px,17vw,130px)/1 'Pinyon Script',cursive;color:var(--blue)}
-.hero h1{font-size:clamp(30px,7vw,58px);letter-spacing:.3em;font-weight:400;margin:6px 0;text-indent:.3em}
-.hero .d{letter-spacing:.4em;font-size:15px;text-indent:.4em}.hero .l{margin-top:28px;font:italic 400 24px 'Cormorant Garamond'}
-.hero .cd{margin-top:8px;font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--blue)}
-section{position:relative;max-width:800px;margin:0 auto;padding:90px 24px}
-.alt{max-width:none;background:radial-gradient(ellipse at 100% 0,#f2c9b455,transparent 45%),radial-gradient(ellipse at 0 100%,#e3d1a266,transparent 45%),var(--wash)}.alt>div{max-width:752px;margin:0 auto}
+.hero h1{font-size:clamp(30px,7vw,58px);letter-spacing:.28em;font-weight:400;margin:8px 0}
+.hero .d{letter-spacing:.35em;font-size:15px}
+.hero .cd{margin-top:14px;font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--blue)}
+section{max-width:840px;margin:0 auto;padding:76px 24px}
+.alt{max-width:none;background:radial-gradient(ellipse at 100% 0,rgba(242,201,180,.35),transparent 45%),radial-gradient(ellipse at 0 100%,rgba(227,209,162,.4),transparent 45%),var(--wash)}
+.alt>div{max-width:840px;margin:0 auto}
 h2{font-size:clamp(34px,6vw,50px);text-align:center;font-weight:400}
-.sub{text-align:center;color:var(--blue);margin:10px 0 36px;font-size:12px;letter-spacing:.3em;text-transform:uppercase}
-.dv{display:block;width:170px;height:22px;margin:0 auto 20px;filter:url(#wc)}
+.sub{text-align:center;color:var(--blue);margin:10px 0 34px;font-size:12px;letter-spacing:.28em;text-transform:uppercase}
 p{margin:0 0 18px}
-.q{text-align:center;font:italic 400 27px/1.4 'Cormorant Garamond',serif;color:var(--blue);max-width:600px;margin:30px auto}
-.js .rv{opacity:0;transform:translateY(28px);transition:opacity 1s,transform 1s}.js .rv.in{opacity:1;transform:none}
-.tag{font-size:11px;letter-spacing:.25em;text-transform:uppercase;color:var(--blue)}
-.tabs{display:flex;justify-content:center;gap:40px;margin-bottom:10px}
-.tb{background:none;border:0;border-bottom:2px solid transparent;font:italic 400 76px/1 'Cormorant Garamond';color:var(--b2);cursor:pointer;padding:0 6px 6px;transition:.4s}.tb small{display:block;font:400 11px Jost;letter-spacing:.25em;text-transform:uppercase;margin-top:6px}
-.tb.on{color:var(--blue);border-color:var(--blue)}
-.pn{display:none;text-align:center;max-width:560px;margin:30px auto 0}.pn.on{display:block;animation:fi .7s}
-.pn h3{font-size:40px;margin:8px 0 14px}.pn .big{font:500 32px 'Cormorant Garamond';color:var(--cc);margin-bottom:14px}
-.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
-.card{background:var(--paper);border:1px solid var(--line);padding:30px 26px;background-image:radial-gradient(ellipse at 0 0,#a9c1d655,transparent 60%);transition:transform .5s,box-shadow .5s}.card:hover{transform:translateY(-6px);box-shadow:0 18px 40px #1d2f4518}
-.card h3{font-size:28px;margin:6px 0 12px}.card p{font-size:16px;margin-bottom:12px}
-.ph{aspect-ratio:16/9;background:radial-gradient(ellipse at 30% 30%,var(--b2),var(--wash));overflow:hidden;margin:-30px -26px 22px}
-.ph img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease}
-.card:hover .ph img{transform:scale(1.04)}
-a.t{color:var(--blue);letter-spacing:.12em;font-size:13px}
+.q{text-align:center;font:italic 400 26px/1.45 'Cormorant Garamond',serif;color:var(--blue);max-width:620px;margin:28px auto}
+.tag{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--blue)}
+.tabs{display:flex;justify-content:center;gap:32px;margin-bottom:14px;flex-wrap:wrap}
+.tb{border-radius:50%;width:104px;height:104px;border:1px solid var(--line);background:var(--paper);font:italic 400 46px/1 'Cormorant Garamond',serif;color:var(--blue);cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.tb small{display:block;font:400 10px Jost,sans-serif;letter-spacing:.2em;text-transform:uppercase;margin-top:4px}
+.tb.on{background:var(--blue);color:#fff;border-color:var(--blue)}
+.pn{display:none;text-align:center;max-width:580px;margin:24px auto 0;background:var(--paper);border:1px solid var(--line);padding:28px 24px}
+.pn.on{display:block}
+.pn h3{font-size:38px;margin:8px 0 12px}
+.pn .big{font:500 28px 'Cormorant Garamond',serif;color:var(--cc);margin-bottom:12px}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px}
+.card{background:var(--paper);border:1px solid var(--line);padding:24px}
+.card h3{font-size:28px;margin:6px 0 12px}
+.card p{font-size:16px;margin-bottom:14px}
+.ph{aspect-ratio:16/9;background:var(--wash);overflow:hidden;margin:-24px -24px 20px}
+.ph img{width:100%;height:100%;object-fit:cover;display:block}
+a.t{color:var(--blue);letter-spacing:.12em;font-size:13px;text-decoration:none;font-weight:500}
 
-/* Para tener presente: claridad de lectura + figuras alusivas */
+/* Para tener presente */
 .fls{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:12px}
-.note-card{position:relative;background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:24px 22px 26px;box-shadow:0 10px 26px #1d2f4512;display:flex;flex-direction:column;gap:12px;overflow:hidden}
-.note-card::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--b2),var(--blue))}
-.note-card:nth-child(2)::before{background:linear-gradient(90deg,var(--sage),var(--blue))}
-.note-card:nth-child(3)::before{background:linear-gradient(90deg,#d8c3a0,var(--cc))}
+.note-card{background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:22px;display:flex;flex-direction:column;gap:10px}
 .note-top{display:flex;align-items:center;justify-content:space-between;gap:12px}
-.note-num{font:italic 500 34px/1 'Cormorant Garamond',serif;color:var(--blue)}
-.note-fig{width:54px;height:54px;flex-shrink:0;filter:url(#wc)}
-.note-card h3{font-size:29px;line-height:1.15;color:var(--ink)}
-.note-sub{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--mute);margin-top:-6px}
-.note-body{font-size:15.5px;line-height:1.68;color:var(--ink);margin:0}
+.note-num{font:italic 500 32px/1 'Cormorant Garamond',serif;color:var(--blue)}
+.note-card h3{font-size:28px;line-height:1.15}
+.note-sub{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--mute)}
+.note-body{font-size:15.5px;line-height:1.65;margin:0}
 .pal{display:flex;gap:10px;margin-top:6px;align-items:center}
-.pal i{width:20px;height:28px;border-radius:0 100% 0 100%;display:block;transform:rotate(-10deg);border:1px solid #0001}
-.sp{position:absolute;top:-6px;width:72px;pointer-events:none;filter:url(#wc);opacity:.9}.sp.l{left:10px}.sp.r{right:10px}
+.pal i{width:20px;height:28px;border-radius:0 100% 0 100%;display:block;transform:rotate(-10deg);border:1px solid rgba(0,0,0,.15)}
 
-.xp{display:grid;grid-template-columns:1fr 1.25fr;gap:34px;align-items:start}
-.xi{display:block;width:100%;text-align:left;background:none;border:0;border-bottom:1px solid var(--line);font:500 28px 'Cormorant Garamond';padding:14px 0;color:var(--mute);cursor:pointer;transition:.4s}
-.xi.on{color:var(--ink);padding-left:16px;border-color:var(--blue)}
-.xi:after{content:" ↗";font:14px Jost;color:var(--blue)}
-#xd{min-height:330px;padding:30px;border:1px solid var(--line);position:relative;transition:background-image .6s ease;display:flex;flex-direction:column;justify-content:flex-end;background-size:cover;background-position:center;color:#fff;overflow:hidden;isolation:isolate}
-#xd:before{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(14,29,42,.88),rgba(14,29,42,.18) 78%);z-index:-1}
-#xd em{position:absolute;top:14px;left:24px;font:italic 400 72px/1 'Cormorant Garamond';color:#fff;opacity:.75;text-shadow:0 2px 10px #0006}
-#xd h3,#xd p{color:#fff;text-shadow:0 1px 8px #0009}
-#xd h3{font-size:34px;margin:6px 0}#xd p{margin:6px 0 0;font-size:16px;line-height:1.6}
+/* Guatapé para explorar */
+.xp{display:grid;grid-template-columns:1fr 1.25fr;gap:30px;align-items:start}
+.xi{display:block;width:100%;text-align:left;background:var(--paper);border:1px solid var(--line);font:500 26px 'Cormorant Garamond',serif;padding:14px 18px;color:var(--mute);cursor:pointer;margin-bottom:10px}
+.xi.on{color:var(--ink);border-color:var(--blue);background:var(--wash)}
+#xd{min-height:340px;padding:28px;border:1px solid var(--line);position:relative;display:flex;flex-direction:column;justify-content:flex-end;background-size:cover;background-position:center;color:#fff;overflow:hidden;isolation:isolate}
+#xd:before{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(15,28,42,.88),rgba(15,28,42,.22) 75%);z-index:-1}
+#xd em{position:absolute;top:14px;left:22px;font:italic 400 64px/1 'Cormorant Garamond',serif;color:#fff;opacity:.8}
+#xd h3,#xd p{color:#fff;margin:6px 0 0}
+#xd h3{font-size:34px}
+#xd p{font-size:16px;line-height:1.6}
 #xd .tag{color:#e4edf4}
 @media(max-width:760px){.fls{grid-template-columns:1fr}}
-@media(max-width:640px){.xp{grid-template-columns:1fr}.tabs{gap:20px}}
-details{border-bottom:1px solid var(--line);padding:16px 0}summary{cursor:pointer;font:500 24px 'Cormorant Garamond';list-style:none}summary::after{content:' +';color:var(--blue)}details[open] summary::after{content:' –'}details p{margin:10px 0 0;font-size:16px;color:var(--mute)}
+@media(max-width:640px){.xp{grid-template-columns:1fr}}
 
-.mo{display:grid;grid-template-columns:repeat(3,1fr);gap:26px 22px;margin:34px 0 10px}
-.mo>div{position:relative;background:var(--paper);padding:10px 10px 0;border:1px solid var(--line);box-shadow:0 12px 28px #1d2f4514;transition:transform .5s,box-shadow .5s}
-.mo>div:nth-child(1){grid-column:span 2}.mo>div:nth-child(odd){transform:rotate(-1deg)}.mo>div:nth-child(even){transform:rotate(1.1deg)}
-.mo>div:hover{transform:rotate(0) translateY(-6px);box-shadow:0 20px 40px #1d2f4524}
-.mo>div::before{content:"";position:absolute;top:-11px;left:50%;width:78px;height:22px;margin-left:-39px;transform:rotate(-3deg);background:#a9c1d6aa;filter:url(#wc);z-index:2}
-.mo>div:nth-child(3n+2)::before{background:#9bb59aaa}.mo>div:nth-child(3n)::before{background:#e3c08fcc}
-.mo b{display:block;height:300px;background:radial-gradient(ellipse at 30% 20%,var(--b2),var(--wash));overflow:hidden}
+details{border-bottom:1px solid var(--line);padding:16px 0}
+summary{cursor:pointer;font:500 23px 'Cormorant Garamond',serif;list-style:none}
+details p{margin:10px 0 0;font-size:16px;color:var(--mute)}
+
+/* Momentos */
+.mo{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin:28px 0 10px}
+.mo>div{background:var(--paper);padding:10px;border:1px solid var(--line)}
+.mo>div:nth-child(1){grid-column:span 2}
+.mo b{display:block;height:280px;background:var(--wash);overflow:hidden}
 .mo b img{width:100%;height:100%;object-fit:cover;display:block}
-.mo em{display:block;text-align:center;padding:12px 6px 15px;font:italic 400 23px 'Cormorant Garamond'}.mo em small{display:block;font:400 10px Jost;letter-spacing:.25em;text-transform:uppercase;color:var(--blue);margin-top:2px}
-@media(max-width:640px){.mo{grid-template-columns:1fr 1fr;gap:22px 14px}.mo b{height:190px}.mo em{font-size:19px}}
+.mo em{display:block;text-align:center;padding:12px 6px 6px;font:italic 400 22px 'Cormorant Garamond',serif}
+.mo em small{display:block;font:400 10px Jost,sans-serif;letter-spacing:.22em;text-transform:uppercase;color:var(--blue);margin-top:3px}
+@media(max-width:640px){.mo{grid-template-columns:1fr}.mo>div:nth-child(1){grid-column:span 1}.mo b{height:210px}}
 
-.c{text-align:center}.has span{display:none!important}
+.c{text-align:center}
 form{display:grid;gap:14px;max-width:520px;margin:0 auto}
-fieldset{border:0;border-top:1px solid var(--line);padding:16px 0 0;margin:6px 0 0;display:grid;gap:12px}legend{font:italic 400 24px 'Cormorant Garamond';color:var(--blue);padding-right:12px}
-input,select,textarea{width:100%;padding:13px;border:1px solid var(--line);border-radius:0;background:var(--paper);color:var(--ink);font:inherit;font-size:16px}
-footer{text-align:center;padding:60px 24px;color:var(--mute);font-size:13px;letter-spacing:.2em;text-transform:uppercase}
-#programa .tb{border-radius:50%;width:110px;height:110px;border:1px solid var(--line);background:var(--paper);font-size:48px}
-#programa .tb.on{background:var(--blue);color:#fff;border-color:var(--blue)}
-#programa .tb small{font-size:10px}
-#mu{min-width:42px}
-#pt{background:none;border:1px solid var(--blue);color:var(--blue);padding:5px 10px;font:inherit}
-#en .lb{margin-bottom:22px}
+fieldset{border:0;border-top:1px solid var(--line);padding:16px 0 0;margin:6px 0 0;display:grid;gap:12px}
+legend{font:italic 400 24px 'Cormorant Garamond',serif;color:var(--blue);padding-right:12px}
+input,select,textarea{width:100%;padding:13px;border:1px solid var(--line);background:var(--paper);color:var(--ink);font:inherit;font-size:16px}
+footer{text-align:center;padding:56px 24px;color:var(--mute);font-size:13px;letter-spacing:.2em;text-transform:uppercase}
 #rsvp .status{font-size:14px;text-align:center;min-height:24px;color:var(--blue)}
-@media(max-width:640px){nav{padding:10px 12px}nav div{gap:12px}.hero{min-height:88vh}#programa .tb{width:94px;height:94px}}
 </style>
 </head>
 <body>
 <div id="pg"></div>
-<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
-<filter id="wc" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency=".022" numOctaves="3" seed="7"/><feDisplacementMap in="SourceGraphic" scale="22"/><feGaussianBlur stdDeviation=".8"/></filter>
-<symbol id="sp" viewBox="0 0 100 260"><path d="M50 260C47 190 56 120 50 8" fill="none" stroke="#6d8aa3" stroke-width="2.4" stroke-linecap="round"/><path d="M50 230C24 224 10 204 12 182C36 188 50 206 50 230Z" fill="#7fa3c4" fill-opacity=".6"/><path d="M50 205C76 199 90 179 88 157C64 163 50 181 50 205Z" fill="#9bb59a" fill-opacity=".65"/><path d="M50 170C26 162 14 142 18 120C40 128 52 146 50 170Z" fill="#a9c1d6" fill-opacity=".8"/><path d="M50 145C74 137 86 117 82 95C60 103 48 121 50 145Z" fill="#7fa3c4" fill-opacity=".6"/><path d="M50 110C32 100 24 82 30 64C46 72 54 90 50 110Z" fill="#9bb59a" fill-opacity=".65"/><path d="M50 85C66 76 74 60 70 44C56 50 48 66 50 85Z" fill="#a9c1d6" fill-opacity=".8"/><path d="M50 40C42 28 44 14 50 6C56 14 58 28 50 40Z" fill="#7fa3c4" fill-opacity=".6"/><g fill="#7a4a32" fill-opacity=".6"><circle cx="22" cy="196" r="5"/><circle cx="80" cy="172" r="5"/><circle cx="28" cy="134" r="4"/><circle cx="74" cy="112" r="4"/></g></symbol>
-<symbol id="tr" viewBox="0 0 200 120"><g fill-opacity=".7"><rect x="38" y="70" width="4" height="50" fill="#7a5a44"/><circle cx="40" cy="58" r="30" fill="#9bb59a"/><circle cx="52" cy="48" r="18" fill="#7fb08e"/><rect x="108" y="56" width="5" height="64" fill="#7a5a44"/><circle cx="110" cy="42" r="38" fill="#7fa3c4"/><circle cx="96" cy="52" r="20" fill="#a9c1d6"/><rect x="168" y="76" width="4" height="44" fill="#7a5a44"/><circle cx="170" cy="62" r="26" fill="#6f9f7e"/></g></symbol>
-<symbol id="fw" viewBox="0 0 100 200"><path d="M50 200C46 150 56 100 52 30" fill="none" stroke="#7f9a80" stroke-width="2.4" stroke-linecap="round"/><path d="M50 150C28 146 16 128 20 110C40 114 52 130 50 150Z" fill="#9bb59a" fill-opacity=".7"/><path d="M52 120C74 114 86 98 82 80C62 84 50 100 52 120Z" fill="#8fb39a" fill-opacity=".7"/><g fill-opacity=".75"><circle cx="52" cy="26" r="16" fill="#f4a58f"/><circle cx="30" cy="62" r="12" fill="#ffc9a8"/><circle cx="74" cy="56" r="13" fill="#f2b84b"/><circle cx="52" cy="26" r="6" fill="#fff4e0"/></g></symbol>
-<symbol id="cf" viewBox="0 0 160 100"><path d="M4 70C50 62 100 40 156 24" fill="none" stroke="#6b7f64" stroke-width="2.4" stroke-linecap="round"/><g fill="#5f8f6e" fill-opacity=".7"><path d="M36 66q8-24 30-26q-2 22-30 26zM80 52q8-24 30-26q-2 22-30 26zM50 69q14 16 36 12q-10-18-36-12zM98 52q14 16 36 12q-10-18-36-12z"/></g><g fill="#c44d3c" fill-opacity=".75"><circle cx="60" cy="74" r="6"/><circle cx="70" cy="80" r="6"/><circle cx="112" cy="58" r="6"/></g></symbol>
 
-<!-- Figuras alusivas para "Para tener presente" -->
-<symbol id="fig-sun" viewBox="0 0 80 80">
-  <circle cx="40" cy="40" r="16" fill="#f2b84b" fill-opacity=".75"/>
-  <path d="M40 8v10M40 62v10M8 40h10M62 40h10M17 17l7 7M56 56l7 7M63 17l-7 7M24 56l-7 7" stroke="#7a4a32" stroke-width="2.5" stroke-linecap="round" opacity=".65"/>
-  <path d="M22 56q12-10 24 0q10-8 16 2" fill="none" stroke="#4f78a0" stroke-width="2.2" stroke-linecap="round"/>
-</symbol>
-<symbol id="fig-attire" viewBox="0 0 80 80">
-  <path d="M32 16h16l5 14-8 4 5 30H30l5-30-8-4z" fill="#a9c1d6" fill-opacity=".65" stroke="#4f78a0" stroke-width="2" stroke-linejoin="round"/>
-  <path d="M14 66q14-8 26-2t26 2" fill="none" stroke="#7f9a80" stroke-width="2.5" stroke-linecap="round"/>
-</symbol>
-<symbol id="fig-palette" viewBox="0 0 80 80">
-  <path d="M40 14a26 26 0 1 0 0 52c5 0 8-3 8-7 0-3-2-5-4-7-2-2-1-6 3-6h7
+<div id="en">
+  <div class="lb">
+    <button type="button" data-l="es" class="on">ES</button>
+    <button type="button" data-l="en">EN</button>
+    <button type="button" data-l="pt">PT</button>
+  </div>
+  <div class="mono">M &amp; R</div>
+  <p>
+    <span data-es>Tenemos un lugar guardado para ti</span>
+    <span data-en>We’ve saved a place for you</span>
+    <span data-pt>Guardamos um lugar para você</span>
+  </p>
+  <button type="button" class="btn" id="openBtn">
+    <span data-es>Abrir invitación</span>
+    <span data-en>Open invitation</span>
+    <span data-pt>Abrir convite</span>
+  </button>
+</div>
+
+<nav>
+  <div>
+    <a href="#historia"><span data-es>Historia</span><span data-en>Story</span><span data-pt>História</span></a>
+    <a href="#programa"><span data-es>Los días</span><span data-en>The days</span><span data-pt>Os dias</span></a>
+    <a href="#lugares"><span data-es>Lugares</span><span data-en>Places</span><span data-pt>Lugares</span></a>
+    <a href="#ambiente"><span data-es>Detalles</span><span data-en>Details</span><span data-pt>Detalhes</span></a>
+    <a href="#explorar">Guatapé</a>
+    <a href="#faq"><span data-es>Preguntas</span><span data-en>FAQ</span><span data-pt>Perguntas</span></a>
+    <a href="#rsvp">RSVP</a>
+  </div>
+  <div>
+    <button type="button" id="mu" aria-label="Music">♪ Jazz</button>
+    <button type="button" id="lg">EN</button>
+    <button type="button" id="pt">PT</button>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="mono">M &amp; R</div>
+  <h1>MARIANA &amp; RYAN</h1>
+  <div class="d">09 · 02 · 2028</div>
+  <div class="d" style="margin-top:6px;font-size:12px">GUATAPÉ · COLOMBIA</div>
+  <div class="cd" id="cd"></div>
+</header>
+
+<section id="historia">
+  <h2><span data-es>Nuestra historia</span><span data-en>Our story</span><span data-pt>Nossa história</span></h2>
+  <p class="sub"><span data-es>Dos países, una misma mesa</span><span data-en>Two countries, one table</span><span data-pt>Dois países, uma mesma mesa</span></p>
+  <p><span data-es>Lo nuestro ha sido, sobre todo, andar juntos: conocer lugares nuevos, probar sabores que no conocíamos, caminar sin afán y quedarnos horas conversando. Un buen café, un chocolate amargo, una mesa larga y la alegría de las cosas pequeñas.</span><span data-en>What we share, more than anything, is wandering together: discovering new places, tasting flavours we didn’t know, walking without hurry and talking for hours. A good coffee, a bar of dark chocolate, a long table and the joy of small things.</span><span data-pt>Nossa história é, acima de tudo, caminhar juntos: conhecer lugares novos, experimentar sabores, passear sem pressa e conversar por horas. Um bom café, um chocolate amargo, uma mesa cheia e a alegria das pequenas coisas.</span></p>
+  <p><span data-es>También hay personas que nos gustaría tener en esa mesa y no van a estar. Aun así, su lugar está guardado. Van en lo que cocinamos, en las historias que contamos y en lo que somos. Esta celebración también es de ellas.</span><span data-en>There are also people we would love to have at that table who won’t be there. Even so, their place is kept. They are in what we cook, in the stories we tell and in who we are. This celebration is theirs too.</span><span data-pt>Também há pessoas que gostaríamos de ter à mesa e que não poderão estar presentes. Ainda assim, seu lugar continua reservado. Elas estão no que cozinhamos, nas histórias que contamos e em quem somos. Esta celebração também é delas.</span></p>
+  <p class="q"><span data-es>Por eso te queremos a ti: a quienes nos han acompañado, de aquí y de allá, para agradecer de dónde venimos y celebrar lo que viene.</span><span data-en>That is why we want you: those who have walked with us, from here and from there, to give thanks for where we come from and to celebrate what comes next.</span><span data-pt>É por isso que queremos você conosco: quem caminhou ao nosso lado, daqui e de lá, para agradecer nossas origens e celebrar o que vem pela frente.</span></p>
+</section>
+
+<section class="alt" id="programa">
+  <div>
+    <h2><span data-es>Dos días juntos</span><span data-en>Two days together</span><span data-pt>Dois dias juntos</span></h2>
+    <p class="sub"><span data-es>8 y 9 de febrero · Selecciona cada fecha</span><span data-en>8 &amp; 9 February · Select each date</span><span data-pt>8 e 9 de fevereiro · Selecione cada data</span></p>
+    <div class="tabs">
+      <button type="button" class="tb on" data-t="0">08<small><span data-es>Martes</span><span data-en>Tuesday</span><span data-pt>Terça</span></small></button>
+      <button type="button" class="tb" data-t="1">09<small><span data-es>Miércoles</span><span data-en>Wednesday</span><span data-pt>Quarta</span></small></button>
+    </div>
+    <div class="pn on">
+      <div class="tag"><span data-es>8 de febrero</span><span data-en>8 February</span><span data-pt>8 de fevereiro</span></div>
+      <h3><span data-es>Conocernos</span><span data-en>Getting to know you</span><span data-pt>Nos conhecer</span></h3>
+      <p><span data-es>Somos pocos, y por eso cada uno importa. Queremos saber quién eres y qué historias traes, y que nuestras dos familias se mezclen y empiecen a sentirse en casa.</span><span data-en>We are a small group, so each of you matters. We want to know who you are and what stories you bring, and for our two families to mix and start to feel at home.</span><span data-pt>Somos poucos, e por isso cada pessoa é importante. Queremos conhecer você e suas histórias, e ver nossas duas famílias se encontrarem e começarem a se sentir em casa.</span></p>
+      <p class="tag"><span data-es>Horario y detalles muy pronto</span><span data-en>Time and details very soon</span><span data-pt>Horário e detalhes em breve</span></p>
+    </div>
+    <div class="pn">
+      <div class="tag"><span data-es>9 de febrero</span><span data-en>9 February</span><span data-pt>9 de fevereiro</span></div>
+      <h3><span data-es>La celebración</span><span data-en>The celebration</span><span data-pt>A celebração</span></h3>
+      <div class="big">5:00 pm · Gretel Chalets, Guatapé</div>
+      <p><span data-es>Nos reunimos para celebrar juntos. Lo que viene después lo guardamos como sorpresa.</span><span data-en>We gather to celebrate together. What comes after, we are keeping as a surprise.</span><span data-pt>Vamos nos reunir para celebrar juntos. O que vem depois ficará como surpresa.</span></p>
+    </div>
+  </div>
+</section>
+
+<section id="lugares">
+  <h2><span data-es>Los lugares</span><span data-en>The places</span><span data-pt>Os lugares</span></h2>
+  <p class="sub"><span data-es>Por qué los elegimos</span><span data-en>Why we chose them</span><span data-pt>Por que os escolhemos</span></p>
+  <div class="two">
+    <div class="card">
+      <div class="ph"><img src="gretel.jpg" alt="Gretel Chalets en Guatapé"></div>
+      <div class="tag"><span data-es>Celebración · 9 de febrero</span><span data-en>Celebration · 9 February</span><span data-pt>Celebração · 9 de fevereiro</span></div>
+      <h3>Gretel Chalets</h3>
+      <p><span data-es>Entre montañas y agua, es un lugar para respirar hondo: aire fresco, espacio para caminar y mesas largas. Lo elegimos porque nos recuerda lo que más nos gusta: explorar, estar en la naturaleza y desconectarnos para estar juntos.</span><span data-en>Between mountains and water, it is a place to breathe deeply: fresh air, space to wander and long tables. We chose it because it reminds us of what we love most: exploring, being in nature and unplugging to be together.</span><span data-pt>Entre montanhas e água, é um lugar para respirar fundo: ar fresco, espaço para caminhar e mesas compridas. Nós o escolhemos porque nos lembra do que mais gostamos: explorar, estar na natureza e nos desconectar para estarmos juntos.</span></p>
+      <a class="t" href="https://www.google.com/maps/search/?api=1&query=Gretel+Chalets+Suizo+Guatape" target="_blank" rel="noopener">MAPS →</a>
+    </div>
+    <div class="card">
+      <div class="ph"><img src="mylos.jpg" alt="MYLOS Hotel Boutique en Guatapé"></div>
+      <div class="tag"><span data-es>Hospedaje · noche del 8</span><span data-en>Stay · night of the 8th</span><span data-pt>Hospedagem · noite do dia 8</span></div>
+      <h3>MYLOS Hotel Boutique</h3>
+      <p><span data-es>Un rincón de inspiración griega frente al embalse, con vista a la Piedra del Peñol. Nos enamoró la idea de abrir el fin de semana mirando el agua, con la calma de las islas del Mediterráneo en medio de las montañas de Antioquia. Cada invitado reserva su habitación.</span><span data-en>A Greek-inspired corner facing the reservoir, with views of Piedra del Peñol. We loved the idea of opening the weekend by the water, with the calm of the Mediterranean islands among the mountains of Antioquia. Each guest books their own room.</span><span data-pt>Um refúgio de inspiração grega diante do reservatório, com vista para a Piedra del Peñol. Adoramos a ideia de começar o fim de semana contemplando a água, com a tranquilidade das ilhas do Mediterrâneo entre as montanhas de Antioquia. Cada convidado reserva seu próprio quarto.</span></p>
+      <a class="t" href="https://www.google.com/maps/search/?api=1&query=MYLOS+Hotel+Boutique+Guatape" target="_blank" rel="noopener">MAPS →</a>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="ambiente">
+  <div>
+    <h2><span data-es>Para tener presente</span><span data-en>Good to keep in mind</span><span data-pt>Para ter em mente</span></h2>
+    <p class="sub"><span data-es>Clima, vestimenta y colores</span><span data-en>Weather, attire &amp; colours</span><span data-pt>Clima, vestimenta e cores</span></p>
+    <div class="fls">
+      <article class="note-card">
+        <div class="note-top"><span class="note-num">01</span><span class="tag">☀ 24–28 °C</span></div>
+        <h3><span data-es>Clima</span><span data-en>Weather</span><span data-pt>Clima</span></h3>
+        <div class="note-sub"><span data-es>Febrero en Guatapé</span><span data-en>February in Guatapé</span><span data-pt>Fevereiro em Guatapé</span></div>
+        <p class="note-body"><span data-es>En febrero suele haber días soleados y agradables (24–28 °C) y noches frescas (14–16 °C), con posibilidad de alguna llovizna ocasional. Lleva una chaqueta liviana para la noche.</span><span data-en>February usually brings warm, sunny days (24–28 °C / 75–82 °F) and cool evenings (14–16 °C / 57–61 °F), with an occasional light shower possible. Bring a light jacket for the evening.</span><span data-pt>Em fevereiro costumam ocorrer dias ensolarados e agradáveis (24–28 °C) e noites frescas (14–16 °C), com possibilidade de chuva leve ocasional. Leve um casaquinho leve para a noite.</span></p>
+      </article>
+      <article class="note-card">
+        <div class="note-top"><span class="note-num">02</span><span class="tag">👗 / 👞</span></div>
+        <h3><span data-es>Cómo vestir</span><span data-en>What to wear</span><span data-pt>Como se vestir</span></h3>
+        <div class="note-sub"><span data-es>Estilo y calzado</span><span data-en>Style &amp; footwear</span><span data-pt>Estilo e calçados</span></div>
+        <p class="note-body"><span data-es>Sugerimos un estilo elegante y natural en telas ligeras. Como caminaremos sobre césped y zonas campestres, lo más cómodo es usar tacón ancho, cuña o zapato plano.</span><span data-en>We suggest an elegant, natural look in light fabrics. Since there will be grass and outdoor paths, block heels, wedges, or flats will be much easier to walk in.</span><span data-pt>Sugerimos um estilo elegante e natural em tecidos leves. Como haverá gramado e áreas externas, salto bloco, anabela ou sapato baixo trarão mais conforto.</span></p>
+      </article>
+      <article class="note-card">
+        <div class="note-top"><span class="note-num">03</span><span class="tag">🎨</span></div>
+        <h3><span data-es>Colores</span><span data-en>Colours</span><span data-pt>Cores</span></h3>
+        <div class="note-sub"><span data-es>Paleta sugerida</span><span data-en>Suggested palette</span><span data-pt>Paleta sugerida</span></div>
+        <p class="note-body"><span data-es>Los tonos tierra son muy bienvenidos. Ten en cuenta que el blanco y el azul hacen parte de nuestra paleta principal de celebración.</span><span data-en>Earthy tones are warmly welcome. Please keep in mind that white and blue are part of our main celebration palette.</span><span data-pt>Tons terrosos são muito bem-vindos. Lembre-se de que branco e azul fazem parte da nossa paleta principal da celebração.</span></p>
+        <div class="pal" aria-label="Paleta de colores">
+          <i style="background:#c9714b"></i>
+          <i style="background:#d8c3a0"></i>
+          <i style="background:#8b9d83"></i>
+          <i style="background:#4f78a0"></i>
+          <i style="background:#fffdf9"></i>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="explorar">
+  <h2><span data-es>Guatapé para explorar</span><span data-en>Guatapé to explore</span><span data-pt>Guatapé para explorar</span></h2>
+  <p class="sub"><span data-es>Para quienes quieran descubrir más</span><span data-en>For those who want to discover more</span><span data-pt>Para quem quiser descobrir mais</span></p>
+  <div class="xp">
+    <div id="xl"></div>
+    <div id="xd"></div>
+  </div>
+</section>
+
+<section class="alt" id="faq">
+  <div>
+    <h2><span data-es>Preguntas frecuentes</span><span data-en>Good to know</span><span data-pt>Perguntas frequentes</span></h2>
+    <p class="sub"><span data-es>Lo que quizá quieras saber</span><span data-en>What you might want to know</span><span data-pt>O que talvez você queira saber</span></p>
+    <details><summary><span data-es>¿Cómo llego a Guatapé?</span><span data-en>How do I get to Guatapé?</span><span data-pt>Como chego a Guatapé?</span></summary><p><span data-es>Desde Medellín son unas 2 horas por carretera. Pronto te contamos cómo nos organizaremos para llegar.</span><span data-en>From Medellín it’s about 2 hours by road. We’ll share very soon how we’ll organise the journey.</span><span data-pt>De Medellín são cerca de 2 horas de carro. Em breve compartilharemos como vamos organizar a chegada.</span></p></details>
+    <details><summary><span data-es>¿Hay parqueadero?</span><span data-en>Is there parking?</span><span data-pt>Há estacionamento?</span></summary><p><span data-es>Sí, hay parqueadero en el lugar de la celebración.</span><span data-en>Yes, there is parking at the celebration venue.</span><span data-pt>Sim, há estacionamento no local da celebração.</span></p></details>
+    <details><summary><span data-es>¿Dónde queda cada lugar?</span><span data-en>Where is each place?</span><span data-pt>Onde fica cada lugar?</span></summary><p><a class="t" href="https://www.google.com/maps/search/?api=1&query=Gretel+Chalets+Suizo+Guatape" target="_blank" rel="noopener">Gretel Chalets →</a> &nbsp; <a class="t" href="https://www.google.com/maps/search/?api=1&query=MYLOS+Hotel+Boutique+Guatape" target="_blank" rel="noopener">MYLOS →</a></p></details>
+    <details><summary><span data-es>¿A qué hora es el encuentro del 8?</span><span data-en>What time is the 8th?</span><span data-pt>A que horas é o encontro do dia 8?</span></summary><p><span data-es>Aún lo estamos definiendo. Te avisaremos muy pronto.</span><span data-en>We’re still deciding. We’ll let you know very soon.</span><span data-pt>Ainda estamos definindo. Avisaremos em breve.</span></p></details>
+    <details><summary><span data-es>Tengo alergias o no como algo</span><span data-en>I have allergies or dietary needs</span><span data-pt>Tenho alergias ou restrições alimentares</span></summary><p><span data-es>Cuéntanos en el formulario al final de la página.</span><span data-en>Tell us in the form at the end of this page.</span><span data-pt>Conte para nós no formulário no final da página.</span></p></details>
+  </div>
+</section>
+
+<section class="c">
+  <h2><span data-es>Tu presencia es nuestro mayor regalo</span><span data-en>Your presence is our greatest gift</span><span data-pt>Sua presença é nosso maior presente</span></h2>
+  <p class="q"><span data-es>Que estés aquí, después de cruzar montañas y océanos para llegar, es todo lo que soñamos. No necesitamos nada más que tu compañía, tu historia y tu cariño.</span><span data-en>Having you here, after crossing mountains and oceans to arrive, is everything we dreamed of. We need nothing more than your company, your story and your affection.</span><span data-pt>Ter você aqui, depois de cruzar montanhas e oceanos para chegar, é tudo o que sonhamos. Não precisamos de nada além da sua companhia, da sua história e do seu carinho.</span></p>
+</section>
+
+<section class="alt" id="momentos">
+  <div>
+    <h2><span data-es>Momentos</span><span data-en>Moments</span><span data-pt>Momentos</span></h2>
+    <p class="sub"><span data-es>Un poco más de nosotros</span><span data-en>A little more of us</span><span data-pt>Um pouco mais de nós</span></p>
+    <div class="mo">
+      <div><b><img src="momento1.jpg" alt="Nuestro primer viaje al Amazonas"></b><em><span data-es>Nuestro primer viaje al Amazonas</span><span data-en>Our first trip to the Amazon</span><span data-pt>Nossa primeira viagem à Amazônia</span><small><span data-es>Kayak</span><span data-en>Kayaking</span><span data-pt>Caiaque</span></small></em></div>
+      <div><b><img src="momento2.jpg" alt="Un café, siempre"></b><em><span data-es>Un café, siempre</span><span data-en>Always a coffee</span><span data-pt>Um café, sempre</span><small><span data-es>Café</span><span data-en>Coffee</span><span data-pt>Café</span></small></em></div>
+      <div><b><img src="momento3.jpg" alt="Amantes de la cocina"></b><em><span data-es>Amantes de la cocina</span><span data-en>Food lovers</span><span data-pt>Amantes da cozinha</span><small><span data-es>Cocina</span><span data-en>Kitchen</span><span data-pt>Cozinha</span></small></em></div>
+      <div><b><img src="momento4.jpg" alt="Viajes"></b><em><span data-es>Viajes</span><span data-en>Travels</span><span data-pt>Viagens</span><small><span data-es>Viajes</span><span data-en>Travels</span><span data-pt>Viagens</span></small></em></div>
+      <div><b><img src="momento5.jpg" alt="Nuestro cantante favorito"></b><em><span data-es>Nuestro cantante favorito</span><span data-en>Our favourite singer</span><span data-pt>Nosso cantor favorito</span><small>Robbie Williams</small></em></div>
+    </div>
+  </div>
+</section>
+
+<section id="rsvp">
+  <h2>RSVP</h2>
+  <p class="sub"><span data-es>Confirma hasta finales de febrero de 2027</span><span data-en>Please reply by the end of February 2027</span><span data-pt>Confirme até o final de fevereiro de 2027</span></p>
+  <form id="f">
+    <input name="n" required placeholder="Nombre / Name / Nome" aria-label="Name">
+    <select name="g">
+      <option value="573045612078">Invitado/a de Mariana · Mariana’s guest</option>
+      <option value="447896643397">Invitado/a de Ryan · Ryan’s guest</option>
+    </select>
+    <input name="p" type="number" min="1" value="1" aria-label="Guests / Invitados">
+    <select name="s">
+      <option>Asistiré / I’ll be there / Estarei lá</option>
+      <option>No podré / I can’t make it / Não poderei ir</option>
+    </select>
+    <select name="h">
+      <option>Reservaré en MYLOS la noche del 8 / I’ll book MYLOS for the 8th</option>
+      <option>Otro alojamiento / Other arrangements</option>
+    </select>
+    <fieldset>
+      <legend><span data-es>Alergias y preferencias</span><span data-en>Allergies &amp; preferences</span><span data-pt>Alergias e preferências</span></legend>
+      <input name="a" placeholder="Alergias / Allergies">
+      <input name="x" placeholder="No como / I don’t eat…">
+      <textarea name="o" rows="3" placeholder="Algo más que debamos saber / Anything else we should know"></textarea>
+    </fieldset>
+    <button class="btn" type="submit">
+      <span data-es>Enviar por WhatsApp</span>
+      <span data-en>Send via WhatsApp</span>
+      <span data-pt>Enviar confirmação</span>
+    </button>
+    <div class="status" id="st"></div>
+  </form>
+</section>
+
+<footer>Gracias · Thank you · Obrigada<br><br>M &amp; R · 2028</footer>
+
+<script>
+const EXP = [
+  {
+    n: "01",
+    img: "piedra-penol.jpg",
+    tag: { es: "Mirador icónico", en: "Iconic viewpoint", pt: "Mirante icônico" },
+    t: { es: "La Piedra del Peñol", en: "La Piedra del Peñol", pt: "A Pedra do Peñol" },
+    d: {
+      es: "Subir sus escalones regala una de las vistas más amplias y memorables de todo el embalse y las montañas de Antioquia.",
+      en: "Climbing its steps rewards you with one of the widest, most memorable views across the reservoir and Antioquia’s mountains.",
+      pt: "Subir seus degraus oferece uma das vistas mais amplas e inesquecíveis de todo o reservatório e das montanhas de Antioquia."
+    }
+  },
+  {
+    n: "02",
+    img: "guatape-pueblo.jpg",
+    tag: { es: "Calles y zócalos", en: "Streets & zócalos", pt: "Ruas e zócalos" },
+    t: { es: "Pueblo de Guatapé", en: "Guatapé Town", pt: "Vila de Guatapé" },
+    d: {
+      es: "Caminar sin prisa entre fachadas coloridas, zócalos tallados con historias locales, plazas tranquilas y cafés de la región.",
+      en: "Stroll unhurriedly past colourful facades, carved zócalos telling local stories, quiet plazas and regional cafés.",
+      pt: "Passear sem pressa por fachadas coloridas, zócalos entalhados com histórias locais, praças tranquilas e cafés da região."
+    }
+  },
+  {
+    n: "03",
+    img: "embalse-guatape.jpg",
+    tag: { es: "Agua y calma", en: "Water & calm", pt: "Água e calma" },
+    t: { es: "El Embalse", en: "The Reservoir", pt: "O Reservatório" },
+    d: {
+      es: "Un paisaje sereno rodeado de colinas verdes y bahías, ideal para contemplar el atardecer o dar un paseo junto al agua.",
+      en: "A serene landscape framed by green hills and coves, ideal for watching the sunset or enjoying a quiet walk by the water.",
+      pt: "Uma paisagem serena cercada por colinas verdes e enseadas, ideal para ver o pôr do sol ou caminhar à beira da água."
+    }
+  }
+];
+
+const xl = document.getElementById('xl');
+const xd = document.getElementById('xd');
+let curLang = 'es';
+let activeExp = 0;
+
+function renderExp(idx) {
+  activeExp = idx;
+  const item = EXP[idx];
+  [...xl.children].forEach((btn, i) => btn.classList.toggle('on', i === idx));
+  xd.style.backgroundImage = `url('${item.img}')`;
+  xd.innerHTML = `<em>${item.n}</em><div class="tag">${item.tag[curLang] || item.tag.es}</div><h3>${item.t[curLang] || item.t.es}</h3><p>${item.d[curLang] || item.d.es}</p>`;
+}
+
+function setLang(l) {
+  curLang = l;
+  document.documentElement.setAttribute('lang', l);
+  document.querySelectorAll('#en .lb button').forEach(b => b.classList.toggle('on', b.dataset.l === l));
+  renderExp(activeExp);
+}
+
+EXP.forEach((item, idx) => {
+  const b = document.createElement('button');
+  b.type = 'button';
+  b.className = 'xi' + (idx === 0 ? ' on' : '');
+  b.innerHTML = `<span data-es>${item.t.es}</span><span data-en>${item.t.en}</span><span data-pt>${item.t.pt}</span>`;
+  b.onclick = () => renderExp(idx);
+  xl.appendChild(b);
+});
+renderExp(0);
+
+document.querySelectorAll('#en .lb button').forEach(b => b.onclick = () => setLang(b.dataset.l));
+document.getElementById('lg').onclick = () => setLang(document.documentElement.lang === 'en' ? 'es' : 'en');
+document.getElementById('pt').onclick = () => setLang(document.documentElement.lang === 'pt' ? 'es' : 'pt');
+document.getElementById('openBtn').onclick = () => document.getElementById('en').classList.add('out');
+
+document.querySelectorAll('#programa .tb').forEach(tb => {
+  tb.onclick = () => {
+    const t = Number(tb.dataset.t);
+    document.querySelectorAll('#programa .tb').forEach((x, i) => x.classList.toggle('on', i === t));
+    document.querySelectorAll('#programa .pn').forEach((x, i) => x.classList.toggle('on', i === t));
+  };
+});
+
+const target = new Date('2028-02-09T17:00:00-05:00').getTime();
+const cdEl = document.getElementById('cd');
+function tick() {
+  const diff = Math.max(0, target - Date.now());
+  const d = Math.floor(diff / 86400000);
+  const h = Math.floor((diff % 86400000) / 3600000);
+  const m = Math.floor((diff % 3600000) / 60000);
+  cdEl.textContent = `${d}d · ${h}h · ${m}m`;
+}
+tick();
+setInterval(tick, 60000);
+
+const pg = document.getElementById('pg');
+window.addEventListener('scroll', () => {
+  const max = document.documentElement.scrollHeight - window.innerHeight;
+  pg.style.width = (max > 0 ? (window.scrollY / max) * 100 : 0) + '%';
+}, { passive: true });
+
+// Chill Jazz con Web Audio API
+let audioCtx = null;
+let jazzTimer = null;
+let isPlaying = false;
+let stepIdx = 0;
+const muBtn = document.getElementById('mu');
+const chords = [
+  [174.61, 261.63, 329.63, 392.00],
+  [164.81, 246.94, 293.66, 392.00],
+  [146.83, 220.00, 261.63, 329.63],
+  [130.81, 196.00, 246.94, 293.66]
+];
+const melodyNotes = [523.25, 587.33, 659.25, 493.88, 440.00, 392.00, 523.25, 659.25];
+
+function playJazzStep() {
+  if (!audioCtx || !isPlaying) return;
+  const now = audioCtx.currentTime;
+  const chord = chords[Math.floor(stepIdx / 2) % chords.length];
+  if (stepIdx % 2 === 0) {
+    chord.forEach((freq, i) => {
+      const osc = audioCtx.createOscillator();
+      const filter = audioCtx.createBiquadFilter();
+      const gain = audioCtx.createGain();
+      osc.type = i % 2 === 0 ? 'sine' : 'triangle';
+      osc.frequency.setValueAtTime(freq, now);
+      filter.type = 'lowpass';
+      filter.frequency.setValueAtTime(950, now);
+      gain.gain.setValueAtTime(0.0001, now);
+      gain.gain.exponentialRampToValueAtTime(0.03, now + 0.25);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + 2.3);
+      osc.connect(filter);
+      filter.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start(now);
+      osc.stop(now + 2.35);
+    });
+  }
+  const noteFreq = melodyNotes[stepIdx % melodyNotes.length];
+  const noteTime = now + (stepIdx % 2 === 1 ? 0.08 : 0);
+  const mOsc = audioCtx.createOscillator();
+  const mFilter = audioCtx.createBiquadFilter();
+  const mGain = audioCtx.createGain();
+  mOsc.type = 'sine';
+  mOsc.frequency.setValueAtTime(noteFreq, noteTime);
+  mFilter.type = 'lowpass';
+  mFilter.frequency.setValueAtTime(1200, noteTime);
+  mGain.gain.setValueAtTime(0.0001, noteTime);
+  mGain.gain.exponentialRampToValueAtTime(0.036, noteTime + 0.04);
+  mGain.gain.exponentialRampToValueAtTime(0.0001, noteTime + 1.05);
+  mOsc.connect(mFilter);
+  mFilter.connect(mGain);
+  mGain.connect(audioCtx.destination);
+  mOsc.start(noteTime);
+  mOsc.stop(noteTime + 1.1);
+  stepIdx++;
+}
+
+muBtn.onclick = async () => {
+  if (!audioCtx) {
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    audioCtx = new AudioContext();
+  }
+  if (audioCtx.state === 'suspended') await audioCtx.resume();
+  isPlaying = !isPlaying;
+  muBtn.classList.toggle('active-audio', isPlaying);
+  if (isPlaying) {
+    playJazzStep();
+    jazzTimer = setInterval(playJazzStep, 1200);
+  } else {
+    clearInterval(jazzTimer);
+  }
+};
+
+document.getElementById('f').onsubmit = e => {
+  e.preventDefault();
+  const fd = new FormData(e.target);
+  const phone = fd.get('g');
+  const lines = [
+    'RSVP Mariana & Ryan (Guatapé 2028)',
+    `Nombre: ${fd.get('n')}`,
+    `Invitados: ${fd.get('p')}`,
+    `Asistencia: ${fd.get('s')}`,
+    `Hospedaje: ${fd.get('h')}`,
+    fd.get('a') ? `Alergias: ${fd.get('a')}` : '',
+    fd.get('x') ? `No come: ${fd.get('x')}` : '',
+    fd.get('o') ? `Notas: ${fd.get('o')}` : ''
+  ].filter(Boolean).join('\n');
+  document.getElementById('st').textContent = 'Abriendo WhatsApp…';
+  window.open(`https://wa.me/${phone}?text=${encodeURIComponent(lines)}`, '_blank', 'noopener');
+};
+</script>
+</body>
+</html>
